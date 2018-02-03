@@ -59,6 +59,7 @@ public class Hook_Controller : MonoBehaviour {
             {
                 in_water = false;
                 rb.gravityScale = 1;
+                gameObject.SetActive(false);
             }
             else
             {
