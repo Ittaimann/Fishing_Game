@@ -24,6 +24,7 @@ public class Water_Physics : MonoBehaviour {
         if(c.CompareTag("Player"))
         {
             c.GetComponent<Player_Movement>().enabled = true;
+            c.GetComponent<Player_Fish>().enabled = true;
             GetComponent<AudioSource>().Play();
             Instantiate(splash, new Vector3(c.transform.position.x, 5, 0), Quaternion.identity);
         }
