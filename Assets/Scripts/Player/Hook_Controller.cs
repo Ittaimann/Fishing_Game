@@ -63,6 +63,8 @@ public class Hook_Controller : MonoBehaviour {
             }
             else
             {
+                rb.gravityScale = 1;
+                gameObject.layer = SortingLayer.GetLayerValueFromName("Hook");
                 GetComponent<Attack_Controller>().enabled = true;
                 enabled = false;
             }
