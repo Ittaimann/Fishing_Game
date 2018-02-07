@@ -6,11 +6,10 @@ public class Attack_Controller : MonoBehaviour
 {
 
     public float track_speed;
-    private Rigidbody2D rb;
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()

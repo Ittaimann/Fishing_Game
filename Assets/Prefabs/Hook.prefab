@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114669941708971464}
   - component: {fileID: 61280432328497134}
   - component: {fileID: 114223800649824634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4739974feb0b33d44b28baf32dabeb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force_mod: 10
+  track_speed: 2
 --- !u!114 &114669941708971464
 MonoBehaviour:
   m_ObjectHideFlags: 1
