@@ -8,6 +8,7 @@ public class Player_Fish : MonoBehaviour {
     public float x_float, y_float, max_power;
     public GameObject hook;
     private bool casted = false, can_charge = true;
+    public MiniMap_Controller minimap;
 
     private LineRenderer lr;
 
@@ -58,6 +59,7 @@ public class Player_Fish : MonoBehaviour {
         casted = true;
         hook.SetActive(true);
         hook.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+        minimap.Object_Followed = hook;
         hook.GetComponent<Rigidbody2D>().AddForce(new Vector2(mouse.x > transform.position.x ? power * x_float : -power * x_float, power * y_float));
         Camera.main.GetComponent<Camera_Follow>().to_follow = hook;
     }
