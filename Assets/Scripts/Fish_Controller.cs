@@ -11,6 +11,11 @@ public class Fish_Controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (direction == 1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+        }
         speed = Random.Range(speed * 0.5f, speed * 1.5f);
         rb = GetComponent<Rigidbody2D>();
 	}
@@ -20,12 +25,12 @@ public class Fish_Controller : MonoBehaviour {
         if (direction == 1)
         {
             if (transform.position.x > end_range)
-                gameObject.SetActive(false);
+                Destroy(gameObject);
         }
         else
         {
             if (transform.position.x < end_range)
-                gameObject.SetActive(false);    
+                Destroy(gameObject);
         }
 
         rb.velocity = new Vector2(speed * Time.deltaTime * direction, rb.velocity.y);
