@@ -6,17 +6,26 @@ public class Attack_Controller : MonoBehaviour
 {
 
     public float track_speed;
-
-
-    void Start()
+    private Rigidbody2D rb2d;
+    public GameObject boat;
+    void Awake()
     {
+        rb2d= GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+
+    void OnEnable()
     {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        transform.position = Vector2.Lerp(transform.position, mouse, track_speed * Time.deltaTime);
+        Debug.Log(mouse);
+        rb2d.AddForce(new Vector2(-(transform.position.x-boat.transform.position.x)*100,250));
+    }
+    void FixedUpdate()
+    {
+       // Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //transform.position = Vector2.Lerp(transform.position, mouse, track_speed * Time.deltaTime);
 
         /*
          *         mouse_pos = Input.mousePosition;

@@ -40,7 +40,7 @@ public class Player_Fish : MonoBehaviour {
         else
         {
             lr.enabled = true;
-            Vector3[] pos = {new Vector3(transform.position.x, transform.position.y+1, 0), new Vector3(hook.transform.position.x, hook.transform.position.y+0.5f, 0) };
+            Vector3[] pos = {new Vector3(transform.position.x, transform.position.y+1, -1), new Vector3(hook.transform.position.x, hook.transform.position.y+0.5f, -1) };
             lr.SetPositions(pos);
             if (!hook.activeSelf)
             {

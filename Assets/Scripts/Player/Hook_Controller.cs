@@ -6,6 +6,9 @@ public class Hook_Controller : MonoBehaviour {
 
     private Rigidbody2D rb;
     public float speed;
+
+    public float maxDistance;
+
     bool in_water = false;
     bool caught_fish = false;
     GameObject fish;
@@ -17,6 +20,7 @@ public class Hook_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (in_water && !caught_fish)
         {
             if (Input.GetMouseButton(0))
@@ -41,6 +45,8 @@ public class Hook_Controller : MonoBehaviour {
             GetComponent<BoxCollider2D>().isTrigger = false;
             rb.velocity = new Vector2(0, rb.velocity.y);
             rb.gravityScale = 0;
+
+            
         }
         else if(c.CompareTag("Fish") && !fish)
         {
@@ -64,7 +70,7 @@ public class Hook_Controller : MonoBehaviour {
             }
             else
             {
-                //rb.gravityScale = 1;
+                rb.gravityScale = 1;
                 GetComponent<Attack_Controller>().enabled = true;
                 enabled = false;
             }
