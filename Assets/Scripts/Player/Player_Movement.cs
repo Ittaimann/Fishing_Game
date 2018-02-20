@@ -21,7 +21,7 @@ public class Player_Movement : MonoBehaviour {
             if(!movement_splash.isPlaying)
                 movement_splash.Play();
 
-            movement_splash.transform.localPosition = new Vector3(0.5f, 0, 0);
+            movement_splash.transform.localPosition = new Vector3(-0.4f, 0, 0);
             movement_splash.transform.rotation = Quaternion.Euler(new Vector3(0, 180, -10));
         }
         else if (rb.velocity.x < 0)
@@ -29,7 +29,7 @@ public class Player_Movement : MonoBehaviour {
             if (!movement_splash.isPlaying)
                 movement_splash.Play();
 
-            movement_splash.transform.localPosition = new Vector3(-0.5f, 0, 0);
+            movement_splash.transform.localPosition = new Vector3(0.4f, 0, 0);
             movement_splash.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -10));
         }
         else

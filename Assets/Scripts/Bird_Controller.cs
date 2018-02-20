@@ -76,16 +76,22 @@ public class Bird_Controller : MonoBehaviour {
 			}
         }
 	}
-void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Fish")
-        {
-            health -= 10*Time.deltaTime; // good testing question, how is the damage going?
-            if (health <= 0)
-                Destroy(gameObject);
-        }
+//void OnTriggerStay2D(Collider2D other)
+//    {
+//        if (other.tag == "Fish")
+//        {
+//            health -= 10*Time.deltaTime; // good testing question, how is the damage going?
+//            if (health <= 0)
+//                Destroy(gameObject);
+//        }
 	
-	}
+//	}
+
+    public void Take_Damage()
+    {
+        //Here is where they die?? I was thinking one hit kill
+        Destroy(gameObject);
+    }
 
 	
 }

@@ -8,6 +8,7 @@ public class Attack_Controller : MonoBehaviour
     public float track_speed;
     private Rigidbody2D rb2d;
     public GameObject boat;
+    private int num_swings = 0;
     void Awake()
     {
         rb2d= GetComponent<Rigidbody2D>();
@@ -18,11 +19,20 @@ public class Attack_Controller : MonoBehaviour
     {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Debug.Log(mouse);
-        rb2d.AddForce(new Vector2(-(transform.position.x-boat.transform.position.x)*100,250));
+        num_swings = 3;
+        //rb2d.AddForce(new Vector2(-(transform.position.x-mouse.x)*100,250));
+        rb2d.AddForce(new Vector2(0, 250));
     }
+
     void FixedUpdate()
     {
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0) && num_swings > 0)
+        {
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(-(transform.position.x - mouse.x) * 50, -(transform.position.y - mouse.y) * 100));
+            num_swings--;
+        }
        // Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //transform.position = Vector2.Lerp(transform.position, mouse, track_speed * Time.deltaTime);
@@ -38,5 +48,16 @@ public class Attack_Controller : MonoBehaviour
          * 
          * 
          */
+    }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        if(c.tag == "Bird" && enabled)
+        {
+            if(num_swings < 3)
+                num_swings++;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 5);
+            c.GetComponent<Bird_Controller>().Take_Damage();
+        }
     }
 }

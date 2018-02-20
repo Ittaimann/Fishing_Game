@@ -41,10 +41,20 @@ public class Hook_Controller : MonoBehaviour {
     {
         if (c.CompareTag("Water"))
         {
-            in_water = true;
-            GetComponent<BoxCollider2D>().isTrigger = false;
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            rb.gravityScale = 0;
+            if(!fish)
+            {
+                in_water = true;
+                GetComponent<BoxCollider2D>().isTrigger = false;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                rb.gravityScale = 0;
+            }
+            else
+            {
+                rb.gravityScale = 1;
+                GetComponent<Attack_Controller>().enabled = false;
+                enabled = true;
+                gameObject.SetActive(false);
+            }
 
             
         }

@@ -25,6 +25,7 @@ public class Water_Physics : MonoBehaviour {
         {
             c.GetComponent<Player_Movement>().enabled = true;
             c.GetComponent<Player_Fish>().enabled = true;
+            c.GetComponent<CircleCollider2D>().enabled = true;
             GetComponent<AudioSource>().Play();
             Instantiate(splash, new Vector3(c.transform.position.x, 5, 0), Quaternion.identity);
         }
