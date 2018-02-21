@@ -11,8 +11,11 @@ public class Player_Fish : MonoBehaviour {
     public MiniMap_Controller minimap;
 
     public Transform PowerBar;
-    private bool shakeBar = false;
+    private bool shakeBar = false, shakingBar = false;
     public bool shakyBar;
+
+    //Changes the direction of the power bar (makes it go up (1) then down (-1))
+    private int UpDownPower = 1;
 
     private LineRenderer lr;
 	// Use this for initialization
@@ -27,17 +30,21 @@ public class Player_Fish : MonoBehaviour {
             lr.enabled = false;
             if (can_charge)
             {
-                if (Input.GetMouseButton(0) && cur_power < max_power)
+                if (Input.GetMouseButton(0))
                 {
                     shakeBar = true;
-                    if(shakeBar)
+                    if (shakyBar && !shakingBar)
                         StartCoroutine(ShakePowerBar());
                     PowerBar.parent.gameObject.SetActive(true);
-                    cur_power += Time.deltaTime;
+                    if (cur_power >= max_power)
+                        UpDownPower = -1;
+                    else if (cur_power <= 0)
+                        UpDownPower = 1;
+                    cur_power += Time.deltaTime * UpDownPower;
 
                     //Flips the power bar to be on the left or right depending on mouse position
                     Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    if(mouse.x > transform.position.x)
+                    if (mouse.x > transform.position.x)
                         PowerBar.parent.transform.localPosition = new Vector3(0.6f, 1.125f, 0);
                     else
                         PowerBar.parent.transform.localPosition = new Vector3(-0.6f, 1.125f, 0);
@@ -97,14 +104,24 @@ public class Player_Fish : MonoBehaviour {
 
     private IEnumerator ShakePowerBar()
     {
+        shakingBar = true;
         Vector3 origin = PowerBar.parent.localPosition;
         float percent;
         while(shakeBar)
         {
             percent = cur_power / max_power;
             yield return new WaitForSeconds(0.1f);
-            PowerBar.parent.localPosition = new Vector3(origin.x + Random.Range(-.02f * percent, .02f * percent), origin.y + Random.Range(-.02f * percent, .02f * percent), 0);
+
+            //I dont like having this here but it works for now
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mouse.x > transform.position.x)
+                origin.x = 0.6f;
+            else
+                origin.x = -0.6f;
+
+            PowerBar.parent.localPosition = new Vector3(origin.x + Random.Range(-.05f * percent, .05f * percent), origin.y + Random.Range(-.05f * percent, .05f * percent), 0);
         }
         PowerBar.parent.localPosition = origin;
+        shakingBar = false;
     }
 }
