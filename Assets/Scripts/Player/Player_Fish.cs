@@ -10,6 +10,8 @@ public class Player_Fish : MonoBehaviour {
     private bool casted = false, can_charge = true;
     public MiniMap_Controller minimap;
 
+    public Transform PowerBar;
+
     private LineRenderer lr;
 
 	// Use this for initialization
@@ -25,7 +27,23 @@ public class Player_Fish : MonoBehaviour {
             if (can_charge)
             {
                 if (Input.GetMouseButton(0) && cur_power < max_power)
+                {
+                    PowerBar.parent.gameObject.SetActive(true);
                     cur_power += Time.deltaTime;
+
+                    //Flips the power bar to be on the left or right depending on mouse position
+                    Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    if(mouse.x > transform.position.x)
+                        PowerBar.parent.transform.localPosition = new Vector3(0.6f, 1.125f, 0);
+                    else
+                        PowerBar.parent.transform.localPosition = new Vector3(-0.6f, 1.125f, 0);
+
+
+                    //Makes the bar go up
+                    PowerBar.localScale = new Vector3(.6f, 0.6f * (cur_power / max_power), 1);
+                    PowerBar.localPosition = new Vector3(0, -.3f + ((cur_power / max_power) * .3f), 0);
+                    PowerBar.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.red, Color.green, cur_power / max_power);
+                }
                 else if (Input.GetMouseButtonUp(0))
                     Cast_Line(cur_power);
             }
@@ -55,6 +73,9 @@ public class Player_Fish : MonoBehaviour {
     {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        Invoke("ClosePowerBar", 1);
+
+        cur_power = 0;
         can_charge = false; 
         casted = true;
         hook.SetActive(true);
@@ -62,5 +83,10 @@ public class Player_Fish : MonoBehaviour {
         minimap.Object_Followed = hook;
         hook.GetComponent<Rigidbody2D>().AddForce(new Vector2(mouse.x > transform.position.x ? power * x_float : -power * x_float, power * y_float));
         Camera.main.GetComponent<Camera_Follow>().to_follow = hook;
+    }
+
+    void ClosePowerBar()
+    {
+        PowerBar.parent.gameObject.SetActive(false);
     }
 }
