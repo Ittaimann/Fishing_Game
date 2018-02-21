@@ -87,7 +87,7 @@ public class Player_Fish : MonoBehaviour {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Invoke("ClosePowerBar", 1);
-
+        GetComponent<AudioSource>().Play();
         cur_power = 0;
         can_charge = false; 
         casted = true;
