@@ -11,6 +11,7 @@ public class Player_Movement : MonoBehaviour {
 	// Use this for initializatio
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        movement_splash.Play();
 	}
 	
 	// Update is called once per frame
@@ -18,22 +19,18 @@ public class Player_Movement : MonoBehaviour {
         rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, rb.velocity.y, 0);
         if (rb.velocity.x > 0)
         {
-            if(!movement_splash.isPlaying)
-                movement_splash.Play();
+            movement_splash.Emit(1);
 
             movement_splash.transform.localPosition = new Vector3(-0.4f, 0, 0);
             movement_splash.transform.rotation = Quaternion.Euler(new Vector3(0, 180, -10));
         }
         else if (rb.velocity.x < 0)
         {
-            if (!movement_splash.isPlaying)
-                movement_splash.Play();
+            movement_splash.Emit(1);
 
             movement_splash.transform.localPosition = new Vector3(0.4f, 0, 0);
             movement_splash.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -10));
         }
-        else
-            movement_splash.Stop();
 
     }
 
