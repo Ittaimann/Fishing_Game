@@ -69,6 +69,10 @@ public class Hook_Controller : MonoBehaviour {
             c.GetComponent<Fish_Controller>().enabled = false;
             c.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
+        else if(c.CompareTag("Wall"))
+        {
+            rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+        }
     }
 
     void OnTriggerExit2D(Collider2D c)
