@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
 
     private bool paused = false;
-    public Canvas pauseMenu;
+    public GameObject pauseMenu;
     [Header("Spawn objects")]
 
     public GameObject fish;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     public float bird_y_range_max;
     // Use this for initialization
     void Start () {
-        pauseMenu.enabled = false;
+        pauseMenu.SetActive(false);
         StartCoroutine(Spawn_Fish());
         StartCoroutine(Spawn_Birds());
 	}
@@ -39,14 +39,14 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             Time.timeScale = 0;
-            pauseMenu.enabled = true;
+            pauseMenu.SetActive(true);
             paused = true;
 
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && paused)
         {
             Time.timeScale = 1;
-            pauseMenu.enabled = false;
+            pauseMenu.SetActive(false);
             paused = false;
         }
     }
@@ -96,11 +96,13 @@ public class GameManager : MonoBehaviour {
 
     public void Restart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("IttaiTest");
     }
 
     public void Quit()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
 
     }
