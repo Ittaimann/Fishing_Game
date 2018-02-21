@@ -20,7 +20,6 @@ public class Hook_Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
         if (in_water && !caught_fish)
         {
             if (Input.GetMouseButton(0))
@@ -51,6 +50,8 @@ public class Hook_Controller : MonoBehaviour {
             else
             {
                 rb.gravityScale = 1;
+                caught_fish = false;
+                in_water = false;
                 GetComponent<Attack_Controller>().enabled = false;
                 Destroy(fish);
                 fish = null;
