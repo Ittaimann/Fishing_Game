@@ -1413,6 +1413,11 @@ Prefab:
       propertyPath: speed
       value: -200
       objectReference: {fileID: 0}
+    - target: {fileID: 114223800649824634, guid: b9876c12eb1cece41bb0171955389301,
+        type: 2}
+      propertyPath: max_swings
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9876c12eb1cece41bb0171955389301, type: 2}
   m_IsPrefabParent: 0

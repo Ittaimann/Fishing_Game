@@ -43,7 +43,7 @@ public class MiniMap_Controller : MonoBehaviour {
         }
     }
 
-    public void Casted(GameObject o)
+    public void Set_Follow(GameObject o)
     {
         Object_Followed = o;
     }

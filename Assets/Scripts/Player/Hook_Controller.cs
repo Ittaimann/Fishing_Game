@@ -42,6 +42,8 @@ public class Hook_Controller : MonoBehaviour {
         {
             if(!fish)
             {
+                //If the hook hits the water after the cast
+
                 in_water = true;
                 GetComponent<BoxCollider2D>().isTrigger = false;
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -49,6 +51,7 @@ public class Hook_Controller : MonoBehaviour {
             }
             else
             {
+                //If the hook hits the water after it has a fish and was attacking
                 rb.gravityScale = 1;
                 caught_fish = false;
                 in_water = false;
@@ -63,6 +66,8 @@ public class Hook_Controller : MonoBehaviour {
         }
         else if(c.CompareTag("Fish") && !fish)
         {
+            //If the hook hits a fish and it doens't have one hooked
+
             fish = c.gameObject;
             caught_fish = true;
             c.transform.parent = transform;
@@ -71,6 +76,8 @@ public class Hook_Controller : MonoBehaviour {
         }
         else if(c.CompareTag("Wall"))
         {
+            //If the hooks hits the wall on a cast
+
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
         }
     }

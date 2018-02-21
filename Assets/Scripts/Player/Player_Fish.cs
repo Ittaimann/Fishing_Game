@@ -50,7 +50,7 @@ public class Player_Fish : MonoBehaviour {
                         PowerBar.parent.transform.localPosition = new Vector3(-0.6f, 1.125f, 0);
 
 
-                    //Makes the bar go up
+                    //Makes the bar go up and change color
                     PowerBar.localScale = new Vector3(.6f, 0.6f * (cur_power / max_power), 1);
                     PowerBar.localPosition = new Vector3(0, -.3f + ((cur_power / max_power) * .3f), 0);
                     PowerBar.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.red, Color.green, cur_power / max_power);
@@ -74,6 +74,7 @@ public class Player_Fish : MonoBehaviour {
             if (!hook.activeSelf)
             {
                 Camera.main.GetComponent<Camera_Follow>().to_follow = gameObject;
+                minimap.Set_Follow(gameObject);
                 casted = false;
                 lr.enabled = false;
             }
@@ -92,7 +93,7 @@ public class Player_Fish : MonoBehaviour {
         casted = true;
         hook.SetActive(true);
         hook.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-        minimap.Object_Followed = hook;
+        minimap.Set_Follow(hook);
         hook.GetComponent<Rigidbody2D>().AddForce(new Vector2(mouse.x > transform.position.x ? power * x_float : -power * x_float, power * y_float));
         Camera.main.GetComponent<Camera_Follow>().to_follow = hook;
     }

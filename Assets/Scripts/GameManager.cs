@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     public float bird_y_range_max;
     // Use this for initialization
     void Start () {
-        pauseMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
         StartCoroutine(Spawn_Fish());
         StartCoroutine(Spawn_Birds());
 	}
