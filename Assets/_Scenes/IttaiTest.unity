@@ -981,6 +981,7 @@ MonoBehaviour:
   hook: {fileID: 1218999295}
   minimap: {fileID: 1777504717}
   PowerBar: {fileID: 1954239617}
+  shakyBar: 1
 --- !u!120 &985144477
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -11,9 +11,10 @@ public class Player_Fish : MonoBehaviour {
     public MiniMap_Controller minimap;
 
     public Transform PowerBar;
+    private bool shakeBar = false;
+    public bool shakyBar;
 
     private LineRenderer lr;
-
 	// Use this for initialization
 	void Start () {
         lr = GetComponent<LineRenderer>();
@@ -28,6 +29,9 @@ public class Player_Fish : MonoBehaviour {
             {
                 if (Input.GetMouseButton(0) && cur_power < max_power)
                 {
+                    shakeBar = true;
+                    if(shakeBar)
+                        StartCoroutine(ShakePowerBar());
                     PowerBar.parent.gameObject.SetActive(true);
                     cur_power += Time.deltaTime;
 
@@ -71,6 +75,7 @@ public class Player_Fish : MonoBehaviour {
 
     private void Cast_Line(float power)
     {
+        shakeBar = false;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Invoke("ClosePowerBar", 1);
@@ -88,5 +93,18 @@ public class Player_Fish : MonoBehaviour {
     void ClosePowerBar()
     {
         PowerBar.parent.gameObject.SetActive(false);
+    }
+
+    private IEnumerator ShakePowerBar()
+    {
+        Vector3 origin = PowerBar.parent.localPosition;
+        float percent;
+        while(shakeBar)
+        {
+            percent = cur_power / max_power;
+            yield return new WaitForSeconds(0.1f);
+            PowerBar.parent.localPosition = new Vector3(origin.x + Random.Range(-.02f * percent, .02f * percent), origin.y + Random.Range(-.02f * percent, .02f * percent), 0);
+        }
+        PowerBar.parent.localPosition = origin;
     }
 }
