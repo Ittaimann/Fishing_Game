@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-   
+
+
+    private bool paused = false;
+    public Canvas pauseMenu;
     [Header("Spawn objects")]
 
     public GameObject fish;
@@ -21,12 +25,30 @@ public class GameManager : MonoBehaviour {
     public float bird_y_range_max;
     // Use this for initialization
     void Start () {
+        pauseMenu.enabled = false;
         StartCoroutine(Spawn_Fish());
         StartCoroutine(Spawn_Birds());
 	}
     public void end()
     {
         Debug.Log("its the end my friend");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+        {
+            Time.timeScale = 0;
+            pauseMenu.enabled = true;
+            paused = true;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+        {
+            Time.timeScale = 1;
+            pauseMenu.enabled = false;
+            paused = false;
+        }
     }
 
     private IEnumerator Spawn_Fish()
@@ -69,6 +91,17 @@ public class GameManager : MonoBehaviour {
             }
             f.GetComponent<Bird_Controller>().direction = dir;
         }
+
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("IttaiTest");
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
 
     }
 }

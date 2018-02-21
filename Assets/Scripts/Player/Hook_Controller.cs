@@ -52,6 +52,8 @@ public class Hook_Controller : MonoBehaviour {
             {
                 rb.gravityScale = 1;
                 GetComponent<Attack_Controller>().enabled = false;
+                Destroy(fish);
+                fish = null;
                 enabled = true;
                 gameObject.SetActive(false);
             }

@@ -19,7 +19,7 @@ public class Attack_Controller : MonoBehaviour
     {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        num_swings = 3;
+        num_swings = 1;
         //rb2d.AddForce(new Vector2(-(transform.position.x-mouse.x)*100,250));
         rb2d.AddForce(new Vector2(0, 250));
     }
@@ -54,7 +54,7 @@ public class Attack_Controller : MonoBehaviour
     {
         if(c.tag == "Bird" && enabled)
         {
-            if(num_swings < 3)
+            if(num_swings < 1)
                 num_swings++;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 5);
             c.GetComponent<Bird_Controller>().Take_Damage();
