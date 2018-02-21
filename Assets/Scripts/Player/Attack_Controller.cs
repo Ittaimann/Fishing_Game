@@ -9,6 +9,7 @@ public class Attack_Controller : MonoBehaviour
     private Rigidbody2D rb2d;
     public GameObject boat;
     private int num_swings = 0;
+    public int max_swings;
     void Awake()
     {
         rb2d= GetComponent<Rigidbody2D>();
@@ -19,7 +20,7 @@ public class Attack_Controller : MonoBehaviour
     {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        num_swings = 1;
+        num_swings = max_swings;
         //rb2d.AddForce(new Vector2(-(transform.position.x-mouse.x)*100,250));
         rb2d.AddForce(new Vector2(0, 250));
     }
@@ -54,7 +55,7 @@ public class Attack_Controller : MonoBehaviour
     {
         if(c.tag == "Bird" && enabled)
         {
-            if(num_swings < 1)
+            if(num_swings < max_swings)
                 num_swings++;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 5);
             c.GetComponent<Bird_Controller>().Take_Damage();
