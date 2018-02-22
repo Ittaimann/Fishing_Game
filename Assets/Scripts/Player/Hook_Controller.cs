@@ -43,7 +43,7 @@ public class Hook_Controller : MonoBehaviour {
             if(!fish)
             {
                 //If the hook hits the water after the cast
-
+                GetComponent<AudioSource>().Play();
                 in_water = true;
                 GetComponent<BoxCollider2D>().isTrigger = false;
                 rb.velocity = new Vector2(0, rb.velocity.y);
