@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour {
     
             if (other.gameObject.tag == "Bird" && hurtable)
             {
+            GetComponent<AudioSource>().Play();
 				health-=1;
                 hurtable=false;
                 StartCoroutine(invincible());
@@ -47,11 +48,11 @@ public class PlayerHealth : MonoBehaviour {
       while(time<3)
       {
             gameObject.transform.GetComponentInParent<SpriteRenderer>().enabled=false;
-            yield return new WaitForSeconds(.25f);
-            time+=.25f;
+            yield return new WaitForSeconds(.05f);
+            time+=.05f;
             gameObject.transform.GetComponentInParent<SpriteRenderer>().enabled = true;
-            yield return new WaitForSeconds(.25f);
-            time += .25f;
+            yield return new WaitForSeconds(.05f);
+            time += .05f;
 
         }
   }

@@ -6,12 +6,10 @@ using UnityEngine.SceneManagement;
 public class StartMenuManger : MonoBehaviour {
 
 	// Use this for initializatio
-	public Canvas controls;
-	public Canvas start;
 	
-	public void beginGame()
+	public void BeginGame()
 	{
-		//SceneManager.LoadScene("Whatever The Scene will be called");
+		SceneManager.LoadScene(1);
 	}
 
 	public void Exit()
@@ -19,12 +17,6 @@ public class StartMenuManger : MonoBehaviour {
 		Application.Quit();
 	}
 
-	public void controlsMenu()
-	{
-		controls.enabled=true;
-		start.enabled=false;
-
-	}
 
 	
 }
