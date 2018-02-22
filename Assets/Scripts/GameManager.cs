@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     private bool paused = false;
     public GameObject pauseMenu;
+    public GameObject GameOverPanel;
     [Header("Spawn objects")]
 
     public GameObject fish;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour {
 	}
     public void end()
     {
-        Debug.Log("its the end my friend");
+        Time.timeScale = 0;
+        GameOverPanel.SetActive(true);
     }
 
     void Update()

@@ -681,8 +681,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411182136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8800049, y: 13.100006, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 1}
+  m_LocalPosition: {x: 0, y: 10.83, z: 0}
+  m_LocalScale: {x: 4, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -951,8 +951,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 597224477}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -36.9, y: 5.040964, z: 0}
-  m_LocalScale: {x: 50.00003, y: 20, z: 1}
+  m_LocalPosition: {x: -36.9, y: 7, z: 0}
+  m_LocalScale: {x: 60, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 2030309287}
   m_RootOrder: 3
@@ -1050,8 +1050,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738759820}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 32.9, y: 5.040964, z: 0}
-  m_LocalScale: {x: 50.00003, y: 20, z: 1}
+  m_LocalPosition: {x: 32.9, y: 7, z: 0}
+  m_LocalScale: {x: 60, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 2030309287}
   m_RootOrder: 2
@@ -1662,6 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 27206429}
+  GameOverPanel: {fileID: 1621162619}
   fish: {fileID: 1613429063926440, guid: 5eac36949cb512345a558fb4b93c4cdc, type: 2}
   bird: {fileID: 1596535034912756, guid: ce67e7c82092b5747aa4cad831747a8c, type: 2}
   x_range_min: -28

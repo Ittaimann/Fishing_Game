@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198573979160941720}
   - component: {fileID: 199931189924320330}
   - component: {fileID: 82207609401025636}
+  - component: {fileID: 114361063975732286}
   m_Layer: 0
   m_Name: Bird_Death
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496894336403320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.9327393, y: 11.254181, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +52,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0ee7d8a104a4c774da9106103643813f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -122,6 +123,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114361063975732286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496894336403320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683db6377e48e5748abed4f178bc3908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198573979160941720
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -182,7 +194,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 624667959
+  randomSeed: 304436965
   InitialModule:
     serializedVersion: 3
     enabled: 1
