@@ -2020,7 +2020,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 27206429}
   GameOverPanel: {fileID: 1621162619}
-  WinPanel: {fileID: 0}
+  WinPanel: {fileID: 1124527819}
+  score_text: {fileID: 1402267281}
+  score: 0
   fish: {fileID: 1613429063926440, guid: 5eac36949cb512345a558fb4b93c4cdc, type: 2}
   bird: {fileID: 1596535034912756, guid: ce67e7c82092b5747aa4cad831747a8c, type: 2}
   x_range_min: -28
@@ -2234,6 +2236,11 @@ Prefab:
       propertyPath: max_swings
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114223800649824634, guid: b9876c12eb1cece41bb0171955389301,
+        type: 2}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1087291861}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9876c12eb1cece41bb0171955389301, type: 2}
   m_IsPrefabParent: 0
@@ -2737,11 +2744,11 @@ RectTransform:
   m_Father: {fileID: 1829349363}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -341.37402, y: 227.35876}
-  m_SizeDelta: {x: 160, y: 31.7}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -10}
+  m_SizeDelta: {x: 160, y: 31.700012}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1402267281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,20 +2770,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 16
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'score lol
-
-'
+  m_Text: 'Score: 0000'
 --- !u!222 &1402267282
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3090,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e89837a09417f446b80a63d8cc05906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000000000
+  health: 5
   invultime: 0
   manager: {fileID: 1087291861}
 --- !u!61 &1784897892
