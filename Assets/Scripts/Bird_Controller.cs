@@ -20,6 +20,7 @@ public class Bird_Controller : MonoBehaviour {
 	private birdState birb;
     public float end_range;
     private Rigidbody2D rb;
+    public GameObject bird_death;
 
     // Use this for initialization
     void Start()
@@ -90,6 +91,7 @@ public class Bird_Controller : MonoBehaviour {
     public void Take_Damage()
     {
         //Here is where they die?? I was thinking one hit kill
+        Instantiate(bird_death, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

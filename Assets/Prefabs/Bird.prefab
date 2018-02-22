@@ -121,6 +121,7 @@ MonoBehaviour:
   direction: 1
   healthrange: {x: 1, y: 6}
   end_range: 0
+  bird_death: {fileID: 1496894336403320, guid: 623da1bd3e052e248bb9d36c04244e45, type: 2}
 --- !u!212 &212505124129867232
 SpriteRenderer:
   m_ObjectHideFlags: 1
