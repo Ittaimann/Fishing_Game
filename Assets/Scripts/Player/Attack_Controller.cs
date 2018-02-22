@@ -10,6 +10,8 @@ public class Attack_Controller : MonoBehaviour
     public GameObject boat;
     private int num_swings = 0;
     public int max_swings;
+    public GameManager gm;
+
     void Awake()
     {
         rb2d= GetComponent<Rigidbody2D>();
@@ -59,6 +61,7 @@ public class Attack_Controller : MonoBehaviour
                 num_swings++;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 5);
             c.GetComponent<Bird_Controller>().Take_Damage();
+            gm.score += 100;
         }
     }
 }

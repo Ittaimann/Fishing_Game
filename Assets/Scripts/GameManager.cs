@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour {
     private bool paused = false;
     public GameObject pauseMenu;
     public GameObject GameOverPanel, WinPanel;
+    public Text score_text;
+    public int score = 0;
     [Header("Spawn objects")]
 
     public GameObject fish;
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour {
         //pauseMenu.SetActive(false);
         StartCoroutine(Spawn_Fish());
         StartCoroutine(Spawn_Birds());
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("score", 0);
 	}
     public void end()
     {
@@ -43,6 +48,7 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
+        score_text.text = "Score: " + score;
         if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             Time.timeScale = 0;
