@@ -8,6 +8,7 @@ public class Weather_Controller : MonoBehaviour {
     public SpriteRenderer sky;
     bool stop_translate = false;
     bool is_night = false;
+    public GameManager gm;
 
 	// Use this for initialization
 	void Start () {
@@ -31,15 +32,23 @@ public class Weather_Controller : MonoBehaviour {
 
     private IEnumerator Change_Sky(bool is_night)
     {
-        stop_translate = true;
-        yield return new WaitForSeconds(1);
-        for(int i = 0; i < 50; ++i)
+        if(!is_night)
         {
-            sky.color = new Color(sky.color.r, is_night ? sky.color.g - 0.02f : sky.color.g + 0.02f, sky.color.b);
-            yield return new WaitForSeconds(0.01f);
+            gm.win();
         }
-        yield return new WaitForSeconds(1f);
-        GetComponent<SpriteRenderer>().color = is_night ? new Color(.83f, .83f, .83f) : new Color(1, 1, 0);
-        stop_translate = false;
+        else
+        {
+            stop_translate = true;
+            yield return new WaitForSeconds(1);
+            for (int i = 0; i < 50; ++i)
+            {
+                sky.color = new Color(sky.color.r, is_night ? sky.color.g - 0.02f : sky.color.g + 0.02f, sky.color.b);
+                yield return new WaitForSeconds(0.01f);
+            }
+            yield return new WaitForSeconds(1f);
+            GetComponent<SpriteRenderer>().color = is_night ? new Color(.83f, .83f, .83f) : new Color(1, 1, 0);
+            stop_translate = false;
+        }
+
     }
 }

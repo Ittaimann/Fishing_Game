@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     private bool paused = false;
     public GameObject pauseMenu;
-    public GameObject GameOverPanel;
+    public GameObject GameOverPanel, WinPanel;
     [Header("Spawn objects")]
 
     public GameObject fish;
@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour {
     {
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
+    }
+    public void win()
+    {
+        Time.timeScale = 0;
+        WinPanel.SetActive(true);
     }
 
     void Update()
