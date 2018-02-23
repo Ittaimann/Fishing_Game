@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
     private bool paused = false;
     public GameObject pauseMenu;
-    public GameObject GameOverPanel, WinPanel;
+    public GameObject GameOverPanel, WinPanel, controlsPanel;
     public Text score_text;
     public int score = 0;
     [Header("Spawn objects")]
@@ -118,5 +118,10 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
 
+    }
+
+    public void controls()
+    {
+        controlsPanel.SetActive(true);
     }
 }

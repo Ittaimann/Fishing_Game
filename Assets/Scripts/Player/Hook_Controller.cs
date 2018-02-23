@@ -94,6 +94,7 @@ public class Hook_Controller : MonoBehaviour {
             }
             else
             {
+                in_water = false;
                 rb.gravityScale = 1;
                 GetComponent<Attack_Controller>().enabled = true;
                 enabled = false;
